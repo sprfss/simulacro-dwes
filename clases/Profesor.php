@@ -2,6 +2,8 @@
 
 // CLASE PROFESOR (HEREDAD DE MIEMBRO)
 
+require_once("Miembro.php");
+
 class Profesor extends Miembro{
 
     // ATRIBUTOS
@@ -35,12 +37,12 @@ class Profesor extends Miembro{
 
     // TO STRING (LO HAGO DE ACRODE AL OUPUT)
     public function __toString(){
-        return "Nombre: " . $this->nombre .", " . "Email: " . $this->email;
+        return "Nombre: " . $this->nombre . " " . $this->apellidos . ", " . "Email: " . $this->email;
     }
 
     // MÉTODOS
 
-    // CREAR PROFESORES DE MUESTRA QUE GENERA UNA COLECCIÓN 
+    // CREAR PROFESORES DE MUESTRA QUE GENERA UNA COLECCIÓN (SIMULA CONEXIONES A LA BASE DE DATOS)
     public static function crearProfesores(){
         $coleccionProfesores = [
             new Profesor(1, "Steve", "Wozniak", "steve@apple.com", "DWES"),
