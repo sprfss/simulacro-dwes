@@ -2,56 +2,65 @@
 
 // CLASE ALUMNO (HEREDAD DE MIEMBRO)
 
-require_once("Miembro.php");
+require_once __DIR__ . ("/Miembro.php");
 
-class Alumno extends Miembro{
+class Alumno extends Miembro
+{
 
     // ATRIBUTOS
     private int $edad;
     private array $asignaturas = [];
-    private bool $cursoAbonado = false ;
+    private bool $cursoAbonado = false;
 
     // CONSTRUCTOR
-    public function __construct($id, $nombre, $apellidos, $email, $edad){
+    public function __construct($id, $nombre, $apellidos, $email, $edad)
+    {
         parent::__construct($id, $nombre, $apellidos, $email);
         $this->edad = $edad;
-        
     }
 
     // GETTERS
-    public function getEdad(){
+    public function getEdad()
+    {
         return $this->edad;
     }
-    public function getAsignaturas(){
+    public function getAsignaturas()
+    {
         return $this->asignaturas;
     }
-    public function getCursoAbonado(){
+    public function getCursoAbonado()
+    {
         return $this->cursoAbonado;
     }
 
     // SETTERS
-    public function setEdad($edad){
+    public function setEdad($edad)
+    {
         $this->edad = $edad;
         return $this;
     }
-    public function setAsignaturas($asignaturas){
+    public function setAsignaturas($asignaturas)
+    {
         $this->asignaturas = $asignaturas;
         return $this;
     }
-    public function setCursoAbonado($cursoAbonado){
+    public function setCursoAbonado($cursoAbonado)
+    {
         $this->cursoAbonado = $cursoAbonado;
         return $this;
     }
 
     // TO STRING (LO HAGO DE ACRODE AL OUPUT)
-    public function __toString(){
-        return "Nombre: " . $this->nombre . " " . $this->apellidos .", " . "Email: " . $this->email;
+    public function __toString()
+    {
+        return "Nombre: " . $this->nombre . " " . $this->apellidos . ", " . "Email: " . $this->email;
     }
 
     // MÉTODOS  
 
     // CREAR ALUMNOS DE MUESTRA QUE GENERA UNA COLECCIÓN (SIMULA CONEXIONES A LA BASE DE DATOS) 
-    public static function crearAlumnos(){
+    public static function crearAlumnosDeMuestra()
+    {
         $coleccionAlumnos = [
             new Alumno(1, "Laura", "Martínez", "laura.martinez@email.com", 22),
             new Alumno(2, "Sergio", "López", "sergio.lopez@email.com", 25),
@@ -65,34 +74,43 @@ class Alumno extends Miembro{
             new Alumno(10, "Pablo", "Torres", "pablo.torres@email.com", 24)
         ];
         return $coleccionAlumnos;
-
     }
 
-    // CREAR MATRICULARSE EN UNA ASIGNATURA, NO PERMITE QUE UN ALUMNO SE MATRICULE 2 VECES EN LA MISMA ASIGNATURA
+    // CREAR MATRICULARSE EN UNA ASIGNATURA,
+    // NO PERMITE QUE UN ALUMNO SE MATRICULE 2 VECES EN LA MISMA ASIGNATURA
     // Le paso un objeto creado de la clase Asignatura y lo compara
-    public function matricularseEnAsignatura(Asignatura $asignatura){
-        foreach ($this->asignaturas as $asignaturaMatriculada){
-            if ($asignaturaMatriculada->getId() === $asignatura->getId()){
+    /*
+    public function matricularseEnAsignatura(Asignatura $asignatura)
+    {
+        foreach ($this->asignaturas as $asignaturaMatriculada) {
+            if ($asignaturaMatriculada->getId() === $asignatura->getId()) {
                 return; //"El alumno ya está matriculado en la asignatura " . $asignatura->getNombre() . ".";
             }
         }
         // Los corchetes son para agregar un elemento a la colección
-        $this->asignaturas[] = $asignatura;
+        // $this->asignaturas[] = $asignatura;
+        return array_push($this->asignaturas, $asignatura);
         // return "El alumno se ha matriculado en la asignatura correctamente.";
     }
+    */
 
+    // MÉTODO PARA ABONAR EL CURSO
+    public function abonarCurso(): bool{
+        if ($this->cursoAbonado){
+            return false;
+        }
+        return $this->cursoAbonado = true;
+    
+    }
 
-
+    // MÉTODO PARA MATRICULARSE EN UNA ASIGNATURA
+    // Le paso una asignatura completa por parámetro, un objeto de clase Asignatura
+    public function matricularseEnAsignatura(Asignatura $asignatura){
+        foreach ($this->asignaturas as $asignaturaMatriculada){
+            if($asignaturaMatriculada->getId() === $asignatura->getId()){
+                return; // Ya está matriculado de la asignatura pasada por parámetro
+            }
+            return array_push($this->asignaturas, $asignatura);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-?>

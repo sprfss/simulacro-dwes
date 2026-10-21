@@ -47,7 +47,7 @@ class Asignatura {
     // MÉTODOS
 
     // CREAR ASIGNATURAS DE MUESTRA QUE GENERA UNA COLECCIÓN DE ASIGNATURAS ()
-    public static function crearAsignaturas(){
+    public static function crearAsignaturasDeMuestra(){
         $coleccionAsignaturas = [
             new Asignatura(1, "DWES", "7 creditos"),
             new Asignatura(2, "DWEC", "6 creditos"),

@@ -2,7 +2,7 @@
 
 // CLASE PROFESOR (HEREDAD DE MIEMBRO)
 
-require_once("Miembro.php");
+require_once __DIR__ . ("/Miembro.php");
 
 class Profesor extends Miembro{
 
@@ -43,7 +43,7 @@ class Profesor extends Miembro{
     // MÉTODOS
 
     // CREAR PROFESORES DE MUESTRA QUE GENERA UNA COLECCIÓN (SIMULA CONEXIONES A LA BASE DE DATOS)
-    public static function crearProfesores(){
+    public static function crearProfesoresDeMuestra(){
         $coleccionProfesores = [
             new Profesor(1, "Steve", "Wozniak", "steve@apple.com", "DWES"),
             new Profesor(2, "Ada", "Lovelace", "ada@gmail.com", "DIW"),
