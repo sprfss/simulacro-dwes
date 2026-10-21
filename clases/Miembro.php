@@ -55,16 +55,4 @@ abstract class Miembro{
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
 ?>
