@@ -39,15 +39,14 @@ class Asignatura {
         return $this;
     }
 
-    // TO STRING
+    // TO STRING (LO HAGO DE ACRODE AL OUPUT)
     public function __toString(){
-        return "Nombre:" . $this->nombre . " " . "Creditos" . $this->creditos;
+        return "Nombre: " . $this->nombre . ", " . "Creditos: " . $this->creditos;
     }
 
     // MÉTODOS
 
     // CREAR ASIGNATURAS DE MUESTRA QUE GENERA UNA COLECCIÓN DE ASIGNATURAS
-
     public static function crearAsignaturas(){
         $coleccionAsignaturas = [
             new Asignatura(1, "DWES", "7 creditos"),
