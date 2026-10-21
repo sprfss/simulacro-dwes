@@ -105,12 +105,12 @@ class Alumno extends Miembro
 
     // MÉTODO PARA MATRICULARSE EN UNA ASIGNATURA
     // Le paso una asignatura completa por parámetro, un objeto de clase Asignatura
-    public function matricularseEnAsignatura(Asignatura $asignatura){
+    public function matricularEnAsignatura(Asignatura $asignatura){
         foreach ($this->asignaturas as $asignaturaMatriculada){
             if($asignaturaMatriculada->getId() === $asignatura->getId()){
                 return; // Ya está matriculado de la asignatura pasada por parámetro
             }
-            return array_push($this->asignaturas, $asignatura);
         }
+        return array_push($this->asignaturas, $asignatura);
     }
 }
